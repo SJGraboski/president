@@ -11,30 +11,30 @@ var PlayersSchema = new Schema({
   },
 
   wins : {
-    type: number
+    type: 'number'
   },
 
   losses : {
-   type: number
+   type: 'number'
   },
 
   president : {
-    type: boolean,
+    type: 'boolean',
     default : false
   },
 
   vicePresident : {
-    type: boolean,
+    type: 'boolean',
     default : false
   },
 
   viceScum : {
-    type: boolean,
+    type: 'boolean',
     default : false
   },
 
   scum : {
-  type : boolean,
+  type : 'boolean',
   default: false
 
   },

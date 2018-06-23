@@ -30,7 +30,12 @@ import request from "request"
 
   updateDeck : function(id, deck){
       return axios.post(`api/players/${id}`)
-  }
+  },
+
+
+  // registerUser : function(){
+  //   return axios.post('user/register')
+  // },
 
 
 

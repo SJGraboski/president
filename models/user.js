@@ -7,13 +7,13 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
 
 userName: {
-        type : string,
+        type : 'string',
         unique: true
     },
  
  
   password : {
-    type: string,
+    type: 'string',
     unique : true
   },
 
@@ -68,7 +68,7 @@ UserSchema.pre('save', function saveHook(next) {
 
 
 // This creates our model from the above schema, using mongoose's model method
-const Users = mongoose.model("Users", UsersSchema);
+const Users = mongoose.model("Users", UserSchema);
 
 Users.on('index', function(error) {
   if (error) {

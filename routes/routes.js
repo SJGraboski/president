@@ -14,14 +14,14 @@ router.route('api/players/:id')
 
 
  router.route('api/games')
-    .create(gameController.create);
+    .post(gameController.create);
 
   router.route('api/games/:id')
     .post(gameController.findOneAndUpdate);  
 
 
 // AUTHENTICATION ROUTES 
-    router.post('/:username', function(req, res, next) {
+    router.post('/user/:username', function(req, res, next) {
         authController.login(req.body.username, req.body.password, function(err, result){
             if(err){  
                 console.log(err);
@@ -46,7 +46,8 @@ router.route('api/players/:id')
         });
     });
     
-    router.post('/', function(req, res, next) {
+    router.post('/user/register', function(req, res, next) {
+        console.log('route hit')
         authController.register(req.body.username, req.body.password, function(err, result){
             if(err){  
                 console.log(err);
