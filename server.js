@@ -2,13 +2,13 @@ const express = require ("express");
 const path = require ("path");
 const app = express();
 const bodyParser = require("body-parser");
-// const mongoose = require("mongoose");
-//const routes = require("./routes/api/routes")
-//const ratingRoutes = require("./routes/api/ratingRoutes")
+const mongoose = require("mongoose");
+const routes = require("./routes/routes")
+
 const PORT = process.env.PORT || 8080;
 
 
- app.use(express.static("./client/build"));
+app.use(express.static("./client/build"));
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended:true }));
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 // Serve up static assets
 
 // Add routes, both API and view
-//app.use(routes);
+app.use(routes);
 
 app.use(express.static(path.join(__dirname, "client")))
 // ... other app.use middleware setups
@@ -37,11 +37,9 @@ app.listen(PORT, function(){
 
 
 // Set up promises with mongoose
-//mongoose.Promise = global.Promise;
- // mongoose.set('debug', false) // enable logging collection methods + arguments to the console
+mongoose.Promise = global.Promise;
+ mongoose.set('debug', false) // enable logging collection methods + arguments to the console
 // Connect to the Mongo DB
-//mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/GamingGurus"
-
-//);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/President");
 
 
