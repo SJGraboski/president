@@ -7,10 +7,7 @@ const routes = require("./routes/routes")
 
 require('dotenv').config();
 
-
 const PORT = process.env.PORT || 8081;
-
-
 
 app.use(express.static("./client/build"));
 
@@ -36,13 +33,10 @@ app.listen(PORT, function(){
     console.log(`Server now on port ${PORT}`)
 });
 
-//g
-
-
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
- mongoose.set('debug', false) // enable logging collection methods + arguments to the console
+mongoose.set('debug', false) // enable logging collection methods + arguments to the console
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/President");
 
