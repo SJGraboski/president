@@ -1,11 +1,13 @@
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 
-var User = require('../models/user')
+var User = require('../models/user');
+require('dotenv').config();
 
 module.exports = {
 
     login: function(username, password, callback){
+        console.log('login con hit')
 
         User.findOne({ username: username }, function(err, user) {
             if(err){
@@ -35,7 +37,7 @@ module.exports = {
         });
     },
     register: function(username, password, callback){
-        
+        console.log('reg controller hit')
         var newUser = new User({username,password});
 
         newUser.save(function(err, user) {

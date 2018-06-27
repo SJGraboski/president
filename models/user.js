@@ -1,12 +1,14 @@
 var mongoose = require("mongoose");
+var bcrypt = require("bcrypt");
 
+const SALT_WORK_FACTOR = 10;
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 
 // This is similar to a Sequelize model
 var UserSchema = new Schema({
 
-userName: {
+username: {
         type : 'string',
         unique: true
     },
