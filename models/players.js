@@ -6,47 +6,48 @@ var Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 var PlayersSchema = new Schema({
  
-  cards : {
-      type: []
+  hand: {
+      type:[]
   },
 
   wins : {
-
+    type: 'number'
   },
 
   losses : {
-
+   type: 'number'
   },
 
   president : {
-    type: boolean,
+    type: 'boolean',
     default : false
   },
 
   vicePresident : {
-    type: boolean,
+    type: 'boolean',
     default : false
   },
 
-  viceAsshole : {
-    type: boolean,
+  viceScum : {
+    type: 'boolean',
     default : false
   },
 
-  asshole : {
-  type : boolean,
+  scum : {
+  type : 'boolean',
   default: false
 
   },
 
 
 
-  ratings: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Rating"
-    }
-  ]
+
+  // ratings: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Rating"
+  //   }
+  // ]
 
   
 

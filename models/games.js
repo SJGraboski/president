@@ -17,7 +17,7 @@ var GamesSchemea = ({
 }],
 
     roomId: {
-        type: string,
+        type: 'string',
         unique : true
     }
 

@@ -48,7 +48,7 @@ export function submitLogin(data) {
 
 export function submitRegister(data) {
     return dispatch => {
-        return fetch('/user/', {
+        return fetch('/user/register', {
             method: 'POST',
             headers: {
                 'Accept:': 'application/json',
