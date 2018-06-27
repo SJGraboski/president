@@ -5,7 +5,11 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes/routes")
 
+require('dotenv').config();
+
+
 const PORT = process.env.PORT || 8081;
+
 
 
 app.use(express.static("./client/build"));
