@@ -1,3 +1,4 @@
+import fetch from 'unfetch';
 import c from '../constants/actionTypes';
 
 function userLoggedIn(username) {
@@ -48,10 +49,10 @@ export function submitLogin(data) {
 
 export function submitRegister(data) {
     return dispatch => {
-        return fetch('/user/register', {
+        return fetch(`/register`, {
             method: 'POST',
             headers: {
-                'Accept:': 'application/json',
+                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data),
