@@ -1,8 +1,8 @@
 var mongoose = require("mongoose");
 var bcrypt = require("bcrypt");
 
-const SALT_WORK_FACTOR = 10;
 
+const SALT_WORK_FACTOR = 10;
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 
@@ -10,6 +10,7 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
 
     username: {
+
         type : 'string',
         unique: true
     },
