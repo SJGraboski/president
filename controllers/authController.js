@@ -37,15 +37,19 @@ module.exports = {
         });
     },
     register: function(username, password, callback){
-        console.log('reg controller hit')
-        var newUser = new User({username,password});
+
+        var newUser = new User({
+            username: username,
+            password: password
+        });
 
         newUser.save(function(err, user) {
             if(err){
+                console.log(err);
                 callback(err, null);
                 return;
             }              
-
+            console.log("ok");
             var authToken = jwt.sign({ username: user.username, _id: user._id}, process.env.JWTSECRET);
             callback(null, authToken);
         });

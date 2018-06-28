@@ -22,7 +22,9 @@ router.route('api/players/:id')
 
 // AUTHENTICATION ROUTES 
     router.post('/user/:username', function(req, res, next) {
+
         console.log('login route hit')
+
         authController.login(req.body.username, req.body.password, function(err, result){
             if(err){  
                 console.log(err);
@@ -48,7 +50,9 @@ router.route('api/players/:id')
     });
     
     router.post('/register', function(req, res, next) {
+
         console.log('register route hit')
+
         authController.register(req.body.username, req.body.password, function(err, result){
             if(err){  
                 console.log(err);
