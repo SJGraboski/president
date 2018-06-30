@@ -1,5 +1,5 @@
-import fetch from 'unfetch';
 import c from '../constants/actionTypes';
+import Axios from 'axios';
 
 function userLoggedIn(username) {
     return {
@@ -23,22 +23,8 @@ function logout() {
 
 export function submitLogin(data) {
     return dispatch => {
-        return fetch(`/user/${data.username}`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data),
-            mode: 'cors'
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-            return response.json();
-        })
-        .then(data => {
+        return Axios.post(`/user/${data.username}`)
+        .then(({data}) => {
             localStorage.setItem('username', data.data.username);
             localStorage.setItem('token', data.data.tokenID);
             dispatch(userLoggedIn(data.data.username));
@@ -49,27 +35,13 @@ export function submitLogin(data) {
 
 export function submitRegister(data) {
     return dispatch => {
-        return fetch(`/register`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data),
-            mode: 'cors'
-        })
-        .then(response => {
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-                return response.json();
-        })
-        .then(data => {
+        return Axios.post('/register', data)
+        .then(({data}) => {
             localStorage.setItem('username', data.data.username);
             localStorage.setItem('token', data.data.tokenID);
             dispatch(userRegistered(data.data.username));
         })
-        .catch(e => console.log(e) );
+        .catch(e => console.log(e));
     }
 }
 
