@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
-import { bindActionCreators } from 'redux';
-import { submitLogin, submitRegister } from '../actions/authActions';
-=======
 import { submitLogin, submitRegister, logoutUser } from '../actions/authActions';
->>>>>>> master
 
 class Header extends Component {
     constructor() {
