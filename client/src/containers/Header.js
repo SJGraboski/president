@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { submitLogin, submitRegister, logoutUser } from '../actions/authActions';
 
 class Header extends Component {
@@ -36,7 +37,7 @@ class Header extends Component {
     }
 
     logout(){
-        this.props.dispatch(logoutUser(this.state.login))
+        this.props.logoutUser();
     }
     
     render() {
