@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { submitLogin, submitRegister } from '../actions/authActions';
+import { submitLogin, submitRegister, logoutUser } from '../actions/authActions';
 
 class Header extends Component {
     constructor() {
@@ -16,6 +16,7 @@ class Header extends Component {
         this.updateInputs = this.updateInputs.bind(this);
         this.login = this.login.bind(this);
         this.register = this.register.bind(this);
+        this.logout = this.logout.bind(this);
     }
 
     updateInputs(e) {
@@ -34,6 +35,11 @@ class Header extends Component {
         e.preventDefault();
         this.props.dispatch(submitRegister(this.state.login))
     }
+
+    logout(){
+        this.props.dispatch(logoutUser(this.state.login))
+    }
+    
     render() {
         const notLoggedInDisplay = (
             <div>
@@ -58,7 +64,8 @@ class Header extends Component {
         const loggedInDisplay = (
             <div>
                 <h1>President</h1>
-                <p>{this.props.username}</p>
+                <p>Logout {this.props.username} ?</p>
+                <button onClick={this.logout}> Logout </button>
             </div>
         )
         return (
