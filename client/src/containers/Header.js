@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { submitLogin, submitRegister } from '../actions/authActions';
 
 class Header extends Component {
@@ -17,7 +18,6 @@ class Header extends Component {
         this.login = this.login.bind(this);
         this.register = this.register.bind(this);
     }
-
     updateInputs(e) {
         let userInfo = Object.assign({}, this.state.login);
         userInfo[e.target.id] = e.target.value;
@@ -28,11 +28,11 @@ class Header extends Component {
     }
     login(e) {
         e.preventDefault();
-        this.props.dispatch(submitLogin(this.state.login))
+        this.props.submitLogin(this.state.login);
     }
     register(e) {
         e.preventDefault();
-        this.props.dispatch(submitRegister(this.state.login))
+        this.props.submitRegister(this.state.login);
     }
     render() {
         const notLoggedInDisplay = (
@@ -68,10 +68,12 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         loggedIn: state.auth.loggedIn,
         username: state.auth.username
     };
 }
-export default connect(mapStateToProps)(Header);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ submitLogin, submitRegister, logoutUser }, dispatch);
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
